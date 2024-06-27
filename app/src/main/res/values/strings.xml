@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AdoptMe</string>
+    <string name="introTitle">AdoptMe</string>
+    <string name="introSubTitle">Open the doors of your heart to  \nsheltering an adorable\!</string>
+    <string name="accopTitleTxt">AdoptMe</string>
+    <string name="accopSubTitleTxt">If you are new, register today! Login if you already have an account</string>
+    <string name="loginTxt">Login Here,</string>
+    <string name="loginRegNowTxt">Don\'t have an account\? Register</string>
+    <string name="forgotPassTxt">Forgot password</string>
+    <string name="registerTxt">Signup Here\,</string>
+    <string name="registerLoginNowTxt">Already have an account\? Login</string>
+</resources>

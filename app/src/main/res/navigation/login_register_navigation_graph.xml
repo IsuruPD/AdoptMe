@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_register_graph"
+    app:startDestination="@id/introFragment">
+
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.s92066379.adoptme.logregpckg.introFragment"
+        android:label="introFragment"
+        tools:layout="@layout/fragment_intro">
+        <action
+            android:id="@+id/action_introFragment_to_accOptionsFragment"
+            app:destination="@id/accOptionsFragment"
+            app:enterAnim="@anim/from_top_to_bottom_in_animation"
+            app:exitAnim="@anim/from_top_to_bottom_out_animation"
+            app:popEnterAnim="@anim/from_bottom_to_top_in_animation"
+            app:popExitAnim="@anim/from_bottom_to_top_out_animation" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.s92066379.adoptme.logregpckg.loginFragment"
+        android:label="loginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment2"
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/from_bottom_to_top_in_animation"
+            app:exitAnim="@anim/from_bottom_to_top_out_animation"
+            app:popEnterAnim="@anim/from_left_to_right_in_animation"
+            app:popExitAnim="@anim/from_left_to_right_out_animation"
+            app:popUpTo="@id/accOptionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.s92066379.adoptme.logregpckg.RegisterFragment"
+        android:label="registerFragment"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/from_bottom_to_top_in_animation"
+            app:exitAnim="@anim/from_bottom_to_top_out_animation"
+            app:popEnterAnim="@anim/from_left_to_right_in_animation"
+            app:popExitAnim="@anim/from_left_to_right_out_animation"
+            app:popUpTo="@id/accOptionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accOptionsFragment"
+        android:name="com.s92066379.adoptme.logregpckg.accOptionsFragment"
+        android:label="accOptionsFragment"
+        tools:layout="@layout/fragment_acc_options">
+        <action
+            android:id="@+id/action_accOptionsFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/from_right_to_left_in_animation"
+            app:exitAnim="@anim/from_right_to_left_out_animation"
+            app:popEnterAnim="@anim/from_left_to_right_in_animation"
+            app:popExitAnim="@anim/from_left_to_right_out_animation" />
+        <action
+            android:id="@+id/action_accOptionsFragment_to_registerFragment2"
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/from_right_to_left_in_animation"
+            app:exitAnim="@anim/from_right_to_left_out_animation"
+            app:popEnterAnim="@anim/from_left_to_right_in_animation"
+            app:popExitAnim="@anim/from_left_to_right_out_animation" />
+    </fragment>
+</navigation>
