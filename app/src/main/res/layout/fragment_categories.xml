@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:stretchColumns="*"
+    tools:context=".dashboardfrags.CategoriesFrag">
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/imageblancklbl1"
+            android:layout_height="30dp" />
+    </TableRow>
+    <TableRow>
+
+        <ImageView
+            android:id="@+id/imageViewcat"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/cat"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewdog"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/dog"
+            />
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/imageViewcatlbl"
+            android:layout_width="150dp"
+            android:text="Cats"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/imageViewdoglbl"
+            android:layout_width="150dp"
+            android:text="Pups"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif-black" />
+
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:id="@+id/imageblancklbl2"
+            android:layout_height="30dp" />
+    </TableRow>
+    <TableRow>
+
+        <ImageView
+            android:id="@+id/imageViewbird"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/bird"
+            />
+
+
+        <ImageView
+            android:id="@+id/imageViewfish"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/fish"
+            />
+
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:id="@+id/imageViewbirdlbl"
+            android:layout_width="150dp"
+            android:text="Birds"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/imageViewfishlbl"
+            android:layout_width="150dp"
+            android:gravity="center"
+            android:text="Fish"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif-black" />
+
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:id="@+id/imageblancklbl3"
+            android:layout_height="30dp" />
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:id="@+id/imageViewother"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/other"
+            />
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:id="@+id/imageViewotherlbl"
+            android:layout_width="150dp"
+            android:text="Other"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif-black" />
+
+    </TableRow>
+</TableLayout>

@@ -14,8 +14,10 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.s92066379.adoptme.viewmodel.LoginVM
 import com.s92066379.adoptme.R
+import com.s92066379.adoptme.activities.CreateListing
 import com.s92066379.adoptme.util.Resource
 import com.s92066379.adoptme.activities.MainActivity
+import com.s92066379.adoptme.activities.OptionsActivity
 import com.s92066379.adoptme.databinding.FragmentLoginBinding
 import com.s92066379.adoptme.dialogBoxes.setupBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -81,7 +83,7 @@ class loginFragment: Fragment(R.layout.fragment_login) {
                     is Resource.Success ->{
                         binding.btnLogin.revertAnimation()
                         Toast.makeText(requireContext(), "Logged In!",Toast.LENGTH_LONG).show()
-                        Intent(requireActivity(), MainActivity:: class.java).also { intent ->
+                        Intent(requireActivity(), OptionsActivity:: class.java).also { intent ->
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
                         }

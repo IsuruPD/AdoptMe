@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    tools:context=".activities.CreateListing">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tbNewListing"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/btnBackCreate"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:elevation="1dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_back_arrow"
+                    app:tint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+
+                <TextView
+                    android:id="@+id/txtBackCreate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Add New Listing"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnBackCreate"
+                    app:layout_constraintStart_toEndOf="@id/btnBackCreate"
+                    app:layout_constraintTop_toTopOf="@+id/btnBackCreate" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imgPetImageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tbNewListing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgPetPicture"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@color/g_gray500"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgAddPicture"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/settings_items_background"
+                android:backgroundTint="#5E85F9"
+                app:layout_constraintBottom_toBottomOf="@id/imgPetPicture"
+                app:layout_constraintEnd_toEndOf="@id/imgPetPicture" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgAddIconView"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_add"
+                app:layout_constraintStart_toStartOf="@+id/imgAddPicture"
+                app:layout_constraintTop_toTopOf="@+id/imgAddPicture"
+                app:layout_constraintBottom_toBottomOf="@id/imgAddPicture"
+                app:layout_constraintEnd_toEndOf="@id/imgAddPicture" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1"
+            app:layout_constraintTop_toBottomOf="@id/imgPetImageLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblName"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    app:autoSizeMaxTextSize="20dp"
+                    app:autoSizeTextType="uniform" />
+                <EditText
+                    android:id="@+id/edtTxtName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:text="Category"
+                    app:autoSizeTextType="uniform"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
+                <Spinner
+                    android:id="@+id/drpdwnCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawSelectorOnTop="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblBreed"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:text="Breed"
+                    app:autoSizeTextType="uniform" />
+                <EditText
+                    android:id="@+id/edTxtBreed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblAge"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:text="Age (Months)"
+                    app:autoSizeMaxTextSize="20dp"
+                    app:autoSizeTextType="uniform" />
+                <EditText
+                    android:id="@+id/edTxtAge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblVaccination"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="Vaccination Status"
+                    app:autoSizeMaxTextSize="20dp"
+                    app:autoSizeTextType="uniform" />
+                <RadioGroup
+                    android:id="@+id/RGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/VacYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:padding="0dp"
+                        android:text="Yes" />
+                    <RadioButton
+                        android:id="@+id/VacNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:padding="0dp"
+                        android:text="No" />
+                    <RadioButton
+                        android:id="@+id/VacUnknown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:padding="0dp"
+                        android:text="Unknown" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Description"
+                    android:layout_span="2"
+                    app:autoSizeMaxTextSize="20dp"
+                    app:autoSizeTextType="uniform" />
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/edtTxtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:layout_span="2"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblContact"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:text="Contact (+94) "
+                    app:autoSizeMaxTextSize="20dp"
+                    app:autoSizeTextType="uniform" />
+                <EditText
+                    android:id="@+id/edTxtContact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Location"
+                    android:layout_span="2"
+                    app:autoSizeMaxTextSize="20dp"
+                    app:autoSizeTextType="uniform" />
+            </TableRow>
+
+            <TableRow>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp"
+                    android:layout_span="2">
+
+                    <fragment
+                        android:id="@+id/id_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/search_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_centerHorizontal="true"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:queryHint="Search location"
+                        android:background="@android:color/white"/>
+                </RelativeLayout>
+            </TableRow>
+
+            <TableRow>
+                <Button
+                    android:id="@+id/addListbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_span="2"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="50dp"
+                    android:backgroundTint="#1A191B"
+                    android:text="List Now"
+                    android:textAllCaps="false" />
+            </TableRow>
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

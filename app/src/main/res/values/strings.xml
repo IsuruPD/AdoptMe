@@ -9,4 +9,12 @@
     <string name="forgotPassTxt">Forgot password</string>
     <string name="registerTxt">Signup Here\,</string>
     <string name="registerLoginNowTxt">Already have an account\? Login</string>
+    <string name="google_maps_key">AIzaSyDJUArDES5CAUVzXC7A5-xhsvrQKvPpGFc</string>
+    <string-array name="animal_categories">
+        <item>Dogs</item>
+        <item>Cats</item>
+        <item>Birds</item>
+        <item>Fish</item>
+        <item>Other</item>
+    </string-array>
 </resources>

@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/h4"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintTop_toTopOf="@id/guidelineleftpattern"
         app:layout_constraintStart_toStartOf="@id/guidelineleftcircle"
         app:layout_constraintEnd_toEndOf="@id/guidelinerightcircle"

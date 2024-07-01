@@ -39,30 +39,29 @@
         <TextView
             android:id="@+id/loginSubTitle"
             style="@style/h2"
-            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="@string/loginRegNowTxt"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/loginTitle"
-            app:layout_constraintTop_toBottomOf="@+id/loginTitle"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/loginTitle" />
 
         <EditText
             android:id="@+id/loginEmailEdt"
+            style="@style/editText"
             android:layout_width="0dp"
             android:layout_height="@dimen/editTextHeight"
-            app:layout_constraintStart_toStartOf="@id/reglog_guide_vl"
-            app:layout_constraintEnd_toEndOf="@id/reglog_guide_vr"
-            app:layout_constraintTop_toBottomOf="@id/reglog_guide_ht3"
-            style="@style/editText"
-            android:textColor="#9583DF"
-            android:inputType="textEmailAddress"
+            android:layout_marginTop="20dp"
             android:hint="Enter your email"
-            android:textSize="15sp"
-            android:textAlignment="textStart"
+            android:inputType="textEmailAddress"
             android:paddingStart="10dp"
-            />
+            android:textAlignment="textStart"
+            android:textColor="#9583DF"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/reglog_guide_vr"
+            app:layout_constraintStart_toStartOf="@+id/loginSubTitle"
+            app:layout_constraintTop_toBottomOf="@+id/loginSubTitle" />
 
         <EditText
             android:id="@+id/loginPasswordEdt"
