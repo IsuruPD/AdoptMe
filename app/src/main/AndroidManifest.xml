@@ -66,8 +66,19 @@
             android:name=".activities.ViewDetails"
             android:exported="false" />
 
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+            android:exported="true" />
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+            android:exported="true" />
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+            android:exported="true" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDJUArDES5CAUVzXC7A5-xhsvrQKvPpGFc" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

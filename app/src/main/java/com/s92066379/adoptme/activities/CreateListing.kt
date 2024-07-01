@@ -31,6 +31,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.FirebaseApp
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import com.s92066379.adoptme.R
 import com.s92066379.adoptme.databinding.ActivityCreateListingBinding
 import com.s92066379.adoptme.firebase.FirebaseListingHelper
@@ -74,6 +79,11 @@ class CreateListing : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_listing)
+
+        // Initialize Firebase App Check with Debug Provider
+        FirebaseApp.initializeApp(this)
+        val firebaseAppCheck = FirebaseAppCheck.getInstance()
+        firebaseAppCheck.installAppCheckProviderFactory(DebugAppCheckProviderFactory.getInstance())
 
         btnSubmit = findViewById(R.id.addListbtn)
         edtName = findViewById(R.id.edtTxtName)
