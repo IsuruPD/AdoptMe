@@ -11,11 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.s92066379.adoptme.Categories.CategoryBirds;
-import com.s92066379.adoptme.Categories.CategoryCats;
-import com.s92066379.adoptme.Categories.CategoryFish;
-import com.s92066379.adoptme.Categories.CategoryOther;
-import com.s92066379.adoptme.Categories.CategoryPups;
+import com.s92066379.adoptme.categories.CategoryCats;
+import com.s92066379.adoptme.categories.CategoryBirds;
+import com.s92066379.adoptme.categories.CategoryFish;
+import com.s92066379.adoptme.categories.CategoryOther;
+import com.s92066379.adoptme.categories.CategoryPups;
 import com.s92066379.adoptme.R;
 
 import dagger.hilt.android.AndroidEntryPoint;

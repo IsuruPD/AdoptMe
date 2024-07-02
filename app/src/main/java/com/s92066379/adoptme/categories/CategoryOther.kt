@@ -1,4 +1,4 @@
-package com.s92066379.adoptme.Categories;
+package com.s92066379.adoptme.categories;
 
 import android.os.Bundle;
 
@@ -9,11 +9,10 @@ import com.s92066379.adoptme.R;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class CategoryPups extends AppCompatActivity {
+class CategoryOther: AppCompatActivity() {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_pups);
+        setContentView(R.layout.activity_category_other);
     }
 }

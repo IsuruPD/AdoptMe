@@ -14,16 +14,14 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.s92066379.adoptme.viewmodel.LoginVM
 import com.s92066379.adoptme.R
-import com.s92066379.adoptme.activities.CreateListing
 import com.s92066379.adoptme.util.Resource
-import com.s92066379.adoptme.activities.MainActivity
 import com.s92066379.adoptme.activities.OptionsActivity
 import com.s92066379.adoptme.databinding.FragmentLoginBinding
 import com.s92066379.adoptme.dialogBoxes.setupBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class loginFragment: Fragment(R.layout.fragment_login) {
+class LoginFragment: Fragment(R.layout.fragment_login) {
     private lateinit var binding: FragmentLoginBinding
     private val viewModel by viewModels<LoginVM>()
     override fun onCreateView(

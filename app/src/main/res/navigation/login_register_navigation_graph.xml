@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/introFragment"
-        android:name="com.s92066379.adoptme.logregpckg.introFragment"
+        android:name="com.s92066379.adoptme.logregpckg.IntroFragment"
         android:label="introFragment"
         tools:layout="@layout/fragment_intro">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.s92066379.adoptme.logregpckg.loginFragment"
+        android:name="com.s92066379.adoptme.logregpckg.LoginFragment"
         android:label="loginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/accOptionsFragment"
-        android:name="com.s92066379.adoptme.logregpckg.accOptionsFragment"
+        android:name="com.s92066379.adoptme.logregpckg.AccOptionsFragment"
         android:label="accOptionsFragment"
         tools:layout="@layout/fragment_acc_options">
         <action

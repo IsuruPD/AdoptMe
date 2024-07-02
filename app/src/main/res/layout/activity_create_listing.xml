@@ -75,7 +75,7 @@
                 android:layout_height="35dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/settings_items_background"
+                android:background="@drawable/floating_button_background"
                 android:backgroundTint="#5E85F9"
                 app:layout_constraintBottom_toBottomOf="@id/imgPetPicture"
                 app:layout_constraintEnd_toEndOf="@id/imgPetPicture" />

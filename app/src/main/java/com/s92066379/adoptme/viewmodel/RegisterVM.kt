@@ -75,39 +75,7 @@ class RegisterVM @Inject constructor(
             .document(userUid)
             .set(userData)
             .addOnSuccessListener {
-                // If user data is saved successfully to 'user' collection, also save the details to 'chatheads' collection
-                val chatheadsData = hashMapOf(
-                    "id" to userUid,
-                    "username" to user.username,
-                    "profileImg" to user.imagePath,
-                    "email" to user.email,
-                    "blocked" to listOf<String>()
-                )
-
-                db.collection("chatheads")
-                    .document(userUid)
-                    .set(chatheadsData)
-                    .addOnSuccessListener {
-
-                    val userChatsData = hashMapOf(
-                        "chats" to listOf<String>() // Initialize 'chats' as an empty list
-                    )
-                    db.collection("userchats")
-                        .document(userUid)
-                        .set(userChatsData)
-                        .addOnSuccessListener {
-                            // All 'user', 'chatheads' and 'userchats' data saved successfully
-                            _register.value = Resource.Success(updatedUser)
-                        }
-                        .addOnFailureListener { e ->
-                            // Error saving data to 'chatheads' collection
-                            _register.value = Resource.Error(e.message.toString())
-                        }
-                    }
-                .addOnFailureListener { e ->
-                    // Error saving data to 'chatheads' collection
-                    _register.value = Resource.Error(e.message.toString())
-                }
+                _register.value = Resource.Success(updatedUser)
             }
             .addOnFailureListener { e ->
                 _register.value = Resource.Error(e.message.toString())

@@ -19,21 +19,9 @@
             android:layout_height="wrap_content"
             android:padding="12dp">
 
-            <TextView
-                android:id="@+id/listingNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:text="1"
-                android:textColor="#000"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/listingImage"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/petName"
+                android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -41,17 +29,16 @@
                 android:textColor="#000"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/timestamp"
-                app:layout_constraintStart_toEndOf="@+id/listingNumber"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/subTitle"
+                android:id="@+id/breed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sub Title"
-                app:layout_constraintStart_toStartOf="@+id/petName"
-                app:layout_constraintTop_toBottomOf="@+id/petName" />
+                app:layout_constraintStart_toStartOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
             <TextView
                 android:id="@+id/timestamp"
@@ -64,24 +51,25 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/listingImage"
+                android:id="@+id/image"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/subTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/breed" />
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Description"
+                android:maxLines="1"
                 android:textSize="14sp"
                 android:textColor="#757575"
                 android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/listingImage"
+                app:layout_constraintTop_toBottomOf="@+id/image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />

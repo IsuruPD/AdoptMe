@@ -48,19 +48,19 @@
             android:name=".activities.Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Categories.CategoryBirds"
+            android:name=".categories.CategoryBirds"
             android:exported="false" />
         <activity
-            android:name=".Categories.CategoryCats"
+            android:name=".categories.CategoryCats"
             android:exported="false" />
         <activity
-            android:name=".Categories.CategoryFish"
+            android:name=".categories.CategoryFish"
             android:exported="false" />
         <activity
-            android:name=".Categories.CategoryOther"
+            android:name=".categories.CategoryOther"
             android:exported="false" />
         <activity
-            android:name=".Categories.CategoryPups"
+            android:name=".categories.CategoryPups"
             android:exported="false" />
         <activity
             android:name=".activities.ViewDetails"

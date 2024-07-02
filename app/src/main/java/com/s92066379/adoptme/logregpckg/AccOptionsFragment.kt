@@ -8,25 +8,28 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.s92066379.adoptme.R
-import com.s92066379.adoptme.databinding.FragmentIntroBinding
+import com.s92066379.adoptme.databinding.FragmentAccOptionsBinding
 
-class introFragment: Fragment(R.layout.fragment_intro) {
-    private lateinit var binding: FragmentIntroBinding
+class AccOptionsFragment: Fragment(R.layout.fragment_acc_options) {
+    private lateinit var binding: FragmentAccOptionsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =FragmentIntroBinding.inflate(inflater)
+        binding = FragmentAccOptionsBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnIntro.setOnClickListener{
-            findNavController().navigate(R.id.action_introFragment_to_accOptionsFragment)
+        binding.btnoptionLogin.setOnClickListener{
+            findNavController().navigate(R.id.action_accOptionsFragment_to_loginFragment)
+        }
+        binding.btnoptionRegister.setOnClickListener{
+            findNavController().navigate(R.id.action_accOptionsFragment_to_registerFragment2)
         }
     }
 }
