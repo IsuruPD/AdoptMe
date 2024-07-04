@@ -71,7 +71,12 @@
         <activity
             android:name=".activities.UserProfile"
             android:exported="false" />
-
+        <activity
+            android:name=".activities.MyListings"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EditMyListings"
+            android:exported="false" />
 
         <activity
             android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"

@@ -219,5 +219,4 @@ class UserProfile: AppCompatActivity() {
             currentPhotoPath = absolutePath
         }
     }
-
 }
