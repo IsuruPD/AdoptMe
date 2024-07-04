@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class OptionsActivity : AppCompatActivity() {
     private lateinit var findV: ImageView
     private lateinit var postV: ImageView
+    private lateinit var profile: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +19,11 @@ class OptionsActivity : AppCompatActivity() {
 
         findV = findViewById(R.id.image_view)
         postV = findViewById(R.id.imageView4)
+        profile = findViewById(R.id.profileImg)
+
+        profile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 
         findV.setOnClickListener {
             startActivity(Intent(this, Dashboard::class.java))
@@ -26,5 +32,6 @@ class OptionsActivity : AppCompatActivity() {
         postV.setOnClickListener {
             startActivity(Intent(this, CreateListing::class.java))
         }
+
     }
 }

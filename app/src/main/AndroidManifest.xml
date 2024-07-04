@@ -65,6 +65,13 @@
         <activity
             android:name=".activities.ViewDetails"
             android:exported="false" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UserProfile"
+            android:exported="false" />
+
 
         <activity
             android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"

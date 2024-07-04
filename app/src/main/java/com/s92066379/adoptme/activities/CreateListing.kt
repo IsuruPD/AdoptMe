@@ -37,7 +37,6 @@ import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.s92066379.adoptme.R
-import com.s92066379.adoptme.databinding.ActivityCreateListingBinding
 import com.s92066379.adoptme.firebase.FirebaseListingHelper
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -55,6 +54,8 @@ class CreateListing : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var cameraActivityResultLauncher: ActivityResultLauncher<Uri>
     private var imageUri: Uri? = null
     private lateinit var imgPetPicture: ImageView
+    private lateinit var imgAddPicture: ImageView
+    private lateinit var imgAddIconView: ImageView
     private lateinit var currentPhotoPath: String
     private lateinit var spinnerCategory: Spinner
     private lateinit var edtName: EditText
@@ -106,14 +107,22 @@ class CreateListing : AppCompatActivity(), OnMapReadyCallback {
 
         val btnBackCreate: ImageView = findViewById(R.id.btnBackCreate)
         btnBackCreate.setOnClickListener {
-            val intent = Intent(this, Dashboard::class.java)
+            val intent = Intent(this, OptionsActivity::class.java)
             startActivity(intent)
         }
 
         imgPetPicture = findViewById(R.id.imgPetPicture)
+        imgAddPicture = findViewById(R.id.imgAddPicture)
+        imgAddIconView = findViewById(R.id.imgAddIconView)
         setupImagePickers()
 
         imgPetPicture.setOnClickListener {
+            showImagePickerDialog()
+        }
+        imgAddPicture.setOnClickListener {
+            showImagePickerDialog()
+        }
+        imgAddIconView.setOnClickListener {
             showImagePickerDialog()
         }
 
@@ -247,6 +256,8 @@ class CreateListing : AppCompatActivity(), OnMapReadyCallback {
         currentMarker?.remove()
         currentMarker = gmap.addMarker(MarkerOptions().position(latLng).title(title))
         gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+        selectedLatitude = latLng.latitude
+        selectedLongitude = latLng.longitude
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -289,7 +300,6 @@ class CreateListing : AppCompatActivity(), OnMapReadyCallback {
             ) { success, message ->
                 if (success) {
                     Toast.makeText(this, "Listing saved successfully!", Toast.LENGTH_SHORT).show()
-                    // Redirect or finish activity
                 } else {
                     Toast.makeText(this, "Error: $message", Toast.LENGTH_SHORT).show()
                 }

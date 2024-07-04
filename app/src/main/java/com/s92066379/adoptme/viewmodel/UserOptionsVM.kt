@@ -10,13 +10,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 @HiltViewModel
 class UserOptionsVM @Inject constructor(
     private val firestore: FirebaseFirestore,
     private val auth: FirebaseAuth
-): ViewModel() {
+) : ViewModel() {
 
     private val _user = MutableStateFlow<Resource<User>>(Resource.Unspecified())
     val user = _user.asStateFlow()
@@ -25,29 +26,24 @@ class UserOptionsVM @Inject constructor(
         getUser()
     }
 
-    fun getUser(){
+    private fun getUser() {
         viewModelScope.launch {
             _user.emit(Resource.Loading())
-        }
-        firestore.collection("user").document(auth.uid!!)
-            .addSnapshotListener{value, error->
-                if(error != null){
-                    viewModelScope.launch{
-                        _user.emit(Resource.Error(error.message.toString()))
-                    }
-                }else{
-                    val user = value?.toObject(User::class.java)
-
-                    user?.let{
-                        viewModelScope.launch {
-                            _user.emit(Resource.Success(user))
-                        }
-                    }
+            try {
+                val userDocument = firestore.collection("user").document(auth.uid!!).get().await()
+                val user = userDocument.toObject(User::class.java)
+                user?.let {
+                    _user.emit(Resource.Success(it))
+                } ?: run {
+                    _user.emit(Resource.Error("User not found"))
                 }
+            } catch (e: Exception) {
+                _user.emit(Resource.Error(e.message ?: "An unknown error occurred"))
             }
+        }
     }
 
-    fun logout(){
+    fun logout() {
         auth.signOut()
     }
 }

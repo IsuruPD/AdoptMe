@@ -1,7 +1,10 @@
 package com.s92066379.adoptme.data
 
 import com.google.firebase.Timestamp
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Listing(
     val userId: String = "",
     val imageUrl: String = "",
@@ -16,4 +19,4 @@ data class Listing(
     val longitude: Double = 0.0,
     val timestamp: Timestamp = Timestamp.now(),
     val status: String = "Pending"
-)
+): Parcelable

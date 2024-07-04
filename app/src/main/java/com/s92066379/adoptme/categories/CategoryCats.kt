@@ -8,24 +8,31 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.s92066379.adoptme.R
 import com.s92066379.adoptme.adapters.ListingsAdapter
 import com.s92066379.adoptme.data.Listing
+import com.s92066379.adoptme.databinding.ActivityCategoryCatsBinding
+import com.s92066379.adoptme.databinding.ActivityViewDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryCats : AppCompatActivity() {
 
+    private lateinit var binding: ActivityCategoryCatsBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ListingsAdapter
     private val listings = mutableListOf<Listing>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category_cats)
+        binding = ActivityCategoryCatsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerviewCats)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         adapter = ListingsAdapter(listings)
         recyclerView.adapter = adapter
+
+
+        binding.btnBackCats.setOnClickListener { onBackPressed() }
 
         fetchListingsFromFirestore()
     }

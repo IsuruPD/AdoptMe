@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".categories.CategoryOther">
+    tools:context=".categories.CategoryCats">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbViewOther"
+        android:id="@+id/tbViewCats"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:elevation="10dp"
@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/btnBackOther"
+                android:id="@+id/btnBackPreviousListings"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:elevation="1dp"
@@ -35,17 +35,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Pookies"
+                android:text="Previous Listings"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:maxLines="1"
-                app:layout_constraintBottom_toBottomOf="@+id/btnBackOther"
-                app:layout_constraintStart_toEndOf="@id/btnBackOther"
-                app:layout_constraintTop_toTopOf="@+id/btnBackOther" />
+                app:layout_constraintBottom_toBottomOf="@+id/btnBackPreviousListings"
+                app:layout_constraintStart_toEndOf="@id/btnBackPreviousListings"
+                app:layout_constraintTop_toTopOf="@+id/btnBackPreviousListings" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -55,15 +54,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <ImageView
-                android:id="@+id/bannerImageOther"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:background="@drawable/categoryother"
-                />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerOther"
+                android:id="@+id/recyclerviewPrevious"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -73,5 +66,4 @@
                 tools:listitem="@layout/listing_row"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </LinearLayout>

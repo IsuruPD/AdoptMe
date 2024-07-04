@@ -71,7 +71,7 @@ class FirebaseListingHelper {
         listingId: String,
         callback: (Boolean, String?) -> Unit
     ) {
-        firestore.collection("users").document(userId)
+        firestore.collection("users_listings").document(userId)
             .collection("listings").document(listingId).set(mapOf("exists" to true))
             .addOnSuccessListener {
                 callback(true, null)

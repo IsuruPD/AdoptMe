@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/nameView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -71,10 +71,9 @@
                 android:layout_marginBottom="5dp">
 
                 <ImageView
-                    android:id="@+id/image"
+                    android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:layout_marginTop="8dp"
                     android:scaleType="centerCrop"/>
 
             </androidx.cardview.widget.CardView>
@@ -92,7 +91,7 @@
                     android:textSize="14sp"/>
 
                 <TextView
-                    android:id="@+id/breed"
+                    android:id="@+id/breedView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -101,7 +100,7 @@
                     android:textSize="14sp"/>
 
                 <TextView
-                    android:id="@+id/timestamp"
+                    android:id="@+id/timestampView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Date"
@@ -125,7 +124,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/age"
+                    android:id="@+id/ageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Age"
@@ -147,7 +146,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/vaccination"
+                    android:id="@+id/vaccinationView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Yes/No/Unknown"
@@ -169,7 +168,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/description"
+                    android:id="@+id/descriptionView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -192,7 +191,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/contact"
+                    android:id="@+id/contactView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Number"

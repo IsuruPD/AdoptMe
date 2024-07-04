@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F4F4F4"
+    android:fillViewport="true"
+    tools:context=".activities.ProfileActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintParent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/userProfileOptions"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/btnBackProfileOptions"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:elevation="1dp"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_back_arrow"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/txtBackCreate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Options"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnBackProfileOptions"
+                        app:layout_constraintStart_toEndOf="@id/btnBackProfileOptions"
+                        app:layout_constraintTop_toTopOf="@+id/btnBackProfileOptions" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/gdlnRightVUserOptions"
+                app:layout_constraintStart_toStartOf="@id/gdlnLeftVUserOptions"
+                app:layout_constraintTop_toBottomOf="@+id/userProfileOptions">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgProfileUserOptions"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtNameUserOptions"
+                    style="@style/SubTextViewThin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"
+                    android:text="Name"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/imgProfileUserOptions"
+                    app:layout_constraintTop_toTopOf="@+id/imgProfileUserOptions" />
+
+                <TextView
+                    android:id="@+id/txtEditProfileUserOptions"
+                    style="@style/SubSubTextViewThin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:textColor="@color/g_gray700"
+                    app:layout_constraintStart_toStartOf="@+id/txtNameUserOptions"
+                    app:layout_constraintTop_toBottomOf="@id/txtNameUserOptions" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/txtTitleOptions"
+                style="@style/SubTextViewThin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Listings"
+                android:textColor="@color/g_gray700"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@id/gdlnLeftVUserOptions"
+                app:layout_constraintTop_toBottomOf="@id/constraintProfile" />
+
+            <LinearLayout
+                android:id="@+id/linearOrders"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/search_box_background"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/gdlnRightVUserOptions"
+                app:layout_constraintStart_toStartOf="@id/gdlnLeftVUserOptions"
+                app:layout_constraintTop_toBottomOf="@id/txtTitleOptions">
+
+                <LinearLayout
+                    android:id="@+id/layoutModule1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/settings_items"
+                        android:src="@drawable/ic_search"
+                        app:backgroundTint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txtPreviousListingsOptions"
+                        style="@style/SubTextViewThin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="1"
+                        android:text="Previous Listings"
+                        android:textColor="@color/g_gray700"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_right_arrow"
+                        android:layout_marginEnd="5dp"
+                        app:tint="@color/g_blue_gray200" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Logout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/search_box_background"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/gdlnRightVUserOptions"
+                app:layout_constraintStart_toStartOf="@id/gdlnLeftVUserOptions"
+                app:layout_constraintTop_toBottomOf="@+id/linearOrders">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/settings_items"
+                        android:src="@drawable/ic_home"
+                        app:backgroundTint="@color/white" />
+
+                    <TextView
+                        style="@style/SubTextViewThin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="1"
+                        android:text="Logout"
+                        android:textColor="@color/g_gray700"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gdlnLeftVUserOptions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.04" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gdlnRightVUserOptions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.96" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

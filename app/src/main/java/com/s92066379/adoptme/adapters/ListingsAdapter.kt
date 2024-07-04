@@ -1,5 +1,6 @@
 package com.s92066379.adoptme.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.s92066379.adoptme.R
+import com.s92066379.adoptme.activities.ViewDetails
 import com.s92066379.adoptme.data.Listing
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -42,6 +44,12 @@ class ListingsAdapter(private val listings: List<Listing>) : RecyclerView.Adapte
             Glide.with(itemView.context)
                 .load(listing.imageUrl)
                 .into(imageView)
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, ViewDetails::class.java)
+                intent.putExtra("listing", listing)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

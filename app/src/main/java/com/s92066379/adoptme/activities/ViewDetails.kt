@@ -1,58 +1,63 @@
 package com.s92066379.adoptme.activities
 
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.s92066379.adoptme.R
-import dagger.hilt.android.AndroidEntryPoint
+import com.s92066379.adoptme.data.Listing
+import com.s92066379.adoptme.databinding.ActivityViewDetailsBinding
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-@AndroidEntryPoint
-class ViewDetails : AppCompatActivity() {
+class ViewDetails : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var nametxt: TextView
-    private lateinit var breedtxt: TextView
-    private lateinit var datetxt: TextView
-    private lateinit var agetxt: TextView
-    private lateinit var vacstatustxt: TextView
-    private lateinit var desctxt: TextView
-    private lateinit var nameStr: String
-    private lateinit var categoryStr: String
-    private lateinit var breedStr: String
-    private lateinit var ageStr: String
-    private lateinit var vacstatusStr: String
+    private lateinit var binding: ActivityViewDetailsBinding
+    private lateinit var googleMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_details)
+        binding = ActivityViewDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        nametxt = findViewById(R.id.name)
-        breedtxt = findViewById(R.id.breed)
-        datetxt = findViewById(R.id.timestamp)
-        agetxt = findViewById(R.id.age)
-        vacstatustxt = findViewById(R.id.vaccination)
-        desctxt = findViewById(R.id.description)
+        val listing = intent.getParcelableExtra<Listing>("listing")
+        listing?.let { displayListingDetails(it) }
 
+        binding.btnBackView.setOnClickListener { onBackPressed() }
 
-        getAndSetIntentData()
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.locationView) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
-    private fun getAndSetIntentData() {
-        if (intent.hasExtra("name") && intent.hasExtra("category") &&
-            intent.hasExtra("breed") && intent.hasExtra("age") && intent.hasExtra("vacstatus")
-        ) {
-            nameStr = intent.getStringExtra("name") ?: ""
-            categoryStr = intent.getStringExtra("category") ?: ""
-            breedStr = intent.getStringExtra("breed") ?: ""
-            ageStr = intent.getStringExtra("age") ?: ""
-            vacstatusStr = intent.getStringExtra("vacstatus") ?: ""
+    private fun displayListingDetails(listing: Listing) {
+        binding.nameView.text = listing.name
+        binding.breedView.text = listing.breed
+        binding.ageView.text = listing.age.toString()
+        binding.vaccinationView.text = listing.vaccinationStatus
+        binding.descriptionView.text = listing.description
+        binding.contactView.text = listing.contact.toString()
 
-            nametxt.text = nameStr
-            breedtxt.text = breedStr
-            agetxt.text = ageStr
-            vacstatustxt.text = vacstatusStr
-        } else {
-            Toast.makeText(this, "No available records!", Toast.LENGTH_SHORT).show()
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formattedDate = sdf.format(listing.timestamp.toDate())
+        binding.timestampView.text = formattedDate
+
+        Glide.with(this)
+            .load(listing.imageUrl)
+            .into(binding.imageView)
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
+        val listing = intent.getParcelableExtra<Listing>("listing")
+        listing?.let {
+            val location = LatLng(it.latitude, it.longitude)
+            googleMap.addMarker(MarkerOptions().position(location).title(it.name))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
         }
     }
 }
