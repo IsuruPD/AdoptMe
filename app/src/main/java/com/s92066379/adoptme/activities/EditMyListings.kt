@@ -337,49 +337,53 @@ class EditMyListings : AppCompatActivity(), OnMapReadyCallback {
             else -> "Unknown"
         }
         val description = edtDescription.text.toString()
-        val contact = edtContact.text.toString().toIntOrNull() ?: 0
-
-        imageUri?.let { uri ->
-            FirebaseListingHelper().uploadImageAndUpdateListing(
-                listingId,
-                uri,
-                name,
-                category,
-                breed,
-                age,
-                vaccinationStatus,
-                description,
-                contact,
-                selectedLatitude,
-                selectedLongitude
-            ) { success, message ->
-                if (success) {
-                    Toast.makeText(this, "Listing updated successfully!", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Error: $message", Toast.LENGTH_SHORT).show()
-                }
-            }
-        } ?: run {
-            FirebaseListingHelper().updateListingWithoutImage(
-                listingId,
-                name,
-                category,
-                breed,
-                age,
-                vaccinationStatus,
-                description,
-                contact,
-                selectedLatitude,
-                selectedLongitude
-            ) { success, message ->
-                if (success) {
-                    Toast.makeText(this, "Listing updated successfully!", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Error: $message", Toast.LENGTH_SHORT).show()
-                }
-            }
+        val contact = edtContact.text.toString()
+        // Validate contact number
+        if (contact.length != 10) {
+            Toast.makeText(this, "Contact number must be exactly 10 digits", Toast.LENGTH_SHORT).show()
+            return
         }
+
+        val contactNumber = contact.toIntOrNull() ?: 0
+
+        FirebaseFirestore.getInstance().collection("general_listings").document(listingId)
+            .get()
+            .addOnSuccessListener { document ->
+                val originalListing = document.toObject(Listing::class.java)
+                originalListing?.let {
+                    val updates = hashMapOf<String, Any>()
+                    if (it.name != name) updates["name"] = name
+                    if (it.category != category) updates["category"] = category
+                    if (it.breed != breed) updates["breed"] = breed
+                    if (it.age != age) updates["age"] = age
+                    if (it.vaccinationStatus != vaccinationStatus) updates["vaccinationStatus"] = vaccinationStatus
+                    if (it.description != description) updates["description"] = description
+                    if (it.contact != contactNumber) updates["contact"] = contactNumber
+                    if (it.latitude != selectedLatitude) updates["latitude"] = selectedLatitude
+                    if (it.longitude != selectedLongitude) updates["longitude"] = selectedLongitude
+                    imageUri?.let { uri ->
+                        updates["imageUrl"] = uri.toString()
+                    }
+
+                    if (updates.isNotEmpty()) {
+                        FirebaseFirestore.getInstance().collection("general_listings").document(listingId)
+                            .update(updates)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "Listing updated successfully!", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { exception ->
+                                Toast.makeText(this, "Error: ${exception.message}", Toast.LENGTH_SHORT).show()
+                            }
+                    } else {
+                        Toast.makeText(this, "No changes detected", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "Error fetching original listing: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
     }
+
 
     private fun confirmDeleteListing() {
         AlertDialog.Builder(this)
@@ -401,4 +405,30 @@ class EditMyListings : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
+
+//    private fun hasChanges(
+//        originalListing: Listing,
+//        name: String,
+//        category: String,
+//        breed: String,
+//        age: Int,
+//        vaccinationStatus: String,
+//        description: String,
+//        contact: Int,
+//        latitude: Double,
+//        longitude: Double,
+//        imageUri: Uri?
+//    ): Boolean {
+//        return originalListing.name != name ||
+//                originalListing.category != category ||
+//                originalListing.breed != breed ||
+//                originalListing.age != age ||
+//                originalListing.vaccinationStatus != vaccinationStatus ||
+//                originalListing.description != description ||
+//                originalListing.contact != contact ||
+//                originalListing.latitude != latitude ||
+//                originalListing.longitude != longitude ||
+//                (imageUri != null && originalListing.imageUrl != imageUri.toString())
+//    }
+
 }

@@ -111,7 +111,7 @@
                     android:layout_width="0dp"
                     android:layout_height="25dp"
                     android:layout_weight="1"
-                    android:text="Name"
+                    android:text="Title"
                     app:autoSizeMaxTextSize="20dp"
                     app:autoSizeTextType="uniform" />
                 <EditText
@@ -281,6 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:inputType="number"
+                    android:maxLength="10"
                     android:text="" />
             </TableRow>
 

@@ -41,6 +41,10 @@ class ProfileActivity : AppCompatActivity() {
             showLogoutConfirmationDialog()
         }
 
+        binding.btnBackProfileOptions.setOnClickListener {
+            onBackPressed()
+        }
+
         fetchUserDetails()
     }
 

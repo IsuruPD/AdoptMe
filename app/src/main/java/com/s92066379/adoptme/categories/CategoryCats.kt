@@ -9,7 +9,6 @@ import com.s92066379.adoptme.R
 import com.s92066379.adoptme.adapters.ListingsAdapter
 import com.s92066379.adoptme.data.Listing
 import com.s92066379.adoptme.databinding.ActivityCategoryCatsBinding
-import com.s92066379.adoptme.databinding.ActivityViewDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +18,7 @@ class CategoryCats : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ListingsAdapter
     private val listings = mutableListOf<Listing>()
+    private val listingIds = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,9 +28,8 @@ class CategoryCats : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerviewCats)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        adapter = ListingsAdapter(listings)
+        adapter = ListingsAdapter(listings, listingIds)
         recyclerView.adapter = adapter
-
 
         binding.btnBackCats.setOnClickListener { onBackPressed() }
 
@@ -39,18 +38,25 @@ class CategoryCats : AppCompatActivity() {
 
     private fun fetchListingsFromFirestore() {
         val db = FirebaseFirestore.getInstance()
-        db.collection("general_listings").addSnapshotListener { queryDocumentSnapshots, e ->
-            if (e != null) {
-                return@addSnapshotListener
-            }
-            listings.clear()
-            if (queryDocumentSnapshots != null) {
-                for (doc in queryDocumentSnapshots) {
-                    val listing = doc.toObject(Listing::class.java)
-                    listings.add(listing)
+        db.collection("general_listings")
+            .whereEqualTo("category", "Cats")
+            .whereEqualTo("status", "Pending")
+            .addSnapshotListener { queryDocumentSnapshots, e ->
+                if (e != null) {
+                    return@addSnapshotListener
                 }
+                listings.clear()
+                listingIds.clear()
+                if (queryDocumentSnapshots != null) {
+                    for (doc in queryDocumentSnapshots) {
+                        val listing = doc.toObject(Listing::class.java)
+                        listing?.let {
+                            listings.add(it)
+                            listingIds.add(doc.id)
+                        }
+                    }
+                }
+                adapter.notifyDataSetChanged()
             }
-            adapter.notifyDataSetChanged()
-        }
     }
 }

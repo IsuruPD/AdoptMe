@@ -14,31 +14,24 @@ import com.s92066379.adoptme.data.Listing
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class ListingsAdapter(private val listings: List<Listing>) : RecyclerView.Adapter<ListingsAdapter.ListingViewHolder>() {
+class ListingsAdapter(private val listings: List<Listing>, private val listingIds: List<String>) : RecyclerView.Adapter<ListingsAdapter.ListingViewHolder>() {
 
     inner class ListingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.image)
         val nameTextView: TextView = itemView.findViewById(R.id.name)
         val dateTextView: TextView = itemView.findViewById(R.id.timestamp)
-        //val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)
         val breedTextView: TextView = itemView.findViewById(R.id.breed)
-        //val ageTextView: TextView = itemView.findViewById(R.id.ageTextView)
-        //val vaccinationStatusTextView: TextView = itemView.findViewById(R.id.vaccinationStatusTextView)
+        val contact: TextView = itemView.findViewById(R.id.contact)
         val descriptionTextView: TextView = itemView.findViewById(R.id.description)
 
-        fun bind(listing: Listing) {
+        fun bind(listing: Listing, listingId: String) {
             nameTextView.text = listing.name
-            //categoryTextView.text = listing.category
             breedTextView.text = listing.breed
+            contact.text = listing.contact.toString()
             val date = listing.timestamp.toDate()
-            // Format the date
             val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val formattedDate = sdf.format(date)
             dateTextView.text = formattedDate
-
-
-            //ageTextView.text = listing.age.toString()
-            //vaccinationStatusTextView.text = listing.vaccinationStatus
             descriptionTextView.text = listing.description
 
             Glide.with(itemView.context)
@@ -48,6 +41,7 @@ class ListingsAdapter(private val listings: List<Listing>) : RecyclerView.Adapte
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, ViewDetails::class.java)
                 intent.putExtra("listing", listing)
+                intent.putExtra("Listing_ID", listingId)
                 itemView.context.startActivity(intent)
             }
         }
@@ -59,7 +53,7 @@ class ListingsAdapter(private val listings: List<Listing>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ListingViewHolder, position: Int) {
-        holder.bind(listings[position])
+        holder.bind(listings[position], listingIds[position])
     }
 
     override fun getItemCount(): Int = listings.size
